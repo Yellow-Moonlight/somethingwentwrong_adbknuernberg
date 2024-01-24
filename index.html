@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <style>
+  body{
+    margin: 0px;
+    padding: 0px;
+
+    background-image: url("forback2.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+  img.absolute {
+    position: absolute;
+    left: 500px;
+    top: 300px;
+  }
+  </style>
+  <title></title>
+</head>
+
+
+<body>
+  <img id="over" src="" style = "width: 500px;" class = "absolute">
+  <img id="barL" src="" style ="">
+  <img id="barS" src="" style ="">
+
+  <div id ="percent" style="color:#808080; font-size: 0.7em; font-family: myraid pro; position: fixed; left:90%; top:17.35%; "></div>
+  <div id="overt" style="color:#808080; font-size: 0.7em; font-family: myraid pro; position: fixed; left:39.3%; top:84.55%;"></div>
+  <div id="remaint" style="color:#808080; font-size: 0.7em; font-family: myraid pro; position: fixed; left:94.7%; top:84.55%;"></div>
+  <div class = "barL3">
+    <div class = "loading"></div>
+  </div>
+
+
+
+  </body>
+  </html>
+
+
+  <script>
+
+  CountDownTimer('4/13/2023 09:00 AM', '9/30/2023 5:00 PM', 'percent', 'endimage', 'overt', 'remaint');
+
+  function CountDownTimer(dt1, dt2, id1, id2, id3, id4){
+    var start = new Date(dt1);
+
+    var _second1 = 1000;
+    var _minute1 = _second1 * 60;
+    var _hour1 = _minute1 * 60;
+    var _day1 = _hour1 * 24;
+    var timer2;
+
+
+    var end = new Date(dt2);
+
+    var _second2 = 1000;
+    var _minute2 = _second2 * 60;
+    var _hour2 = _minute2 * 60;
+    var _day2 = _hour2 * 24;
+    var timer2;
+
+    function showRemaining() {
+
+      var now = new Date();
+
+      var distance1 = end - start;
+
+      var distance2 = end - now;
+      var distance3 = now - start;
+
+
+      var days1 = Math.floor(distance1 / _day1);
+      var hours1 = Math.floor((distance1 % _day1) / _hour1);
+      var minutes1 = Math.floor((distance1 % _hour1) / _minute1);
+      var seconds1 = Math.floor((distance1 % _minute1) / _second1);
+      var total1 = seconds1 + minutes1*60 + hours1*3600 + days1*3600*24;
+
+      var days2 = Math.floor(distance2 / _day2);
+      var hours2 = Math.floor((distance2 % _day2) / _hour2);
+      var minutes2 = Math.floor((distance2 % _hour2) / _minute2);
+      var seconds2 = Math.floor((distance2 % _minute2) / _second2);
+      var total2 = seconds2 + minutes2*60 + hours2*3600 + days2*3600*24;
+
+      var days3 = Math.floor(distance3 / _day1);
+      var hours3 = Math.floor((distance3 % _day1) / _hour1);
+      var minutes3 = Math.floor((distance3 % _hour1) / _minute1);
+      var seconds3 = Math.floor((distance3 % _minute1) / _second1);
+      var total3 = seconds3 + minutes3*60 + hours3*3600 + days3*3600*24;
+
+      var per2 = Math.floor(total3 / (total2+total3) *100);
+      var per1 = (total3 / (total2+total3) *100).toFixed(5);
+
+
+
+
+      if(per2<100){
+        document.getElementById(id1).textContent = per2 + '%';
+
+        document.getElementById(id3).textContent = days3 + 'days ';
+        document.getElementById(id3).textContent += hours3 + ':';
+        document.getElementById(id3).textContent += minutes3 + ':';
+        document.getElementById(id3).textContent += seconds3;
+
+        document.getElementById(id4).textContent = days2 + 'days ';
+        document.getElementById(id4).textContent += hours2 + ':';
+        document.getElementById(id4).textContent += minutes2 + ':';
+        document.getElementById(id4).textContent += seconds2;
+
+
+        if(per2<1){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 0.5% 100%, 0.5% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 0.5% 100%, 0.5% 0%);";
+      } else if(per2>=1 && per2<2){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 1% 100%, 1% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 1% 100%, 1% 0%);";
+      } else if(per2>=2 && per2<3){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 2% 100%, 2% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 2% 100%, 2% 0%);";
+      } else if(per2>=3 && per2<4){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 3% 100%, 3% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 3% 100%, 3% 0%);";
+      } else if(per2>=4 && per2<5){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 4% 100%, 4% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 4% 100%, 4% 0%);";
+      } else if(per2>=5 && per2<6){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 5% 100%, 5% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 5% 100%, 5% 0%);";
+      } else if(per2>=6 && per2<7){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 6% 100%, 6% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 6% 100%, 6% 0%);";
+      } else if(per2>=7 && per2<8){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 7% 100%, 7% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 7% 100%, 7% 0%);";
+      } else if(per2>=8 && per2<9){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 8% 100%, 8% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 8% 100%, 8% 0%);";
+      } else if(per2>=9 && per2<10){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 9% 100%, 9% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 9% 100%, 9% 0%);";
+      } else if(per2>=10 && per2<11){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 10% 100%, 10% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 10% 100%, 10% 0%);";
+      } else if(per2>=11 && per2<12){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 11% 100%, 11% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 11% 100%, 11% 0%);";
+      } else if(per2>=12 && per2<13){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 12% 100%, 12% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 12% 100%, 12% 0%);";
+      } else if(per2>=13 && per2<14){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 13% 100%, 13% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 13% 100%, 13% 0%);";
+      } else if(per2>=14 && per2<15){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 14% 100%, 14% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 14% 100%, 14% 0%);";
+      } else if(per2>=15 && per2<16){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 15% 100%, 15% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 15% 100%, 15% 0%);";
+      } else if(per2>=16 && per2<17){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 16% 100%, 16% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 16% 100%, 16% 0%);";
+      } else if(per2>=17 && per2<18){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 17% 100%, 17% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 17% 100%, 17% 0%);";
+      } else if(per2>=18 && per2<19){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 18% 100%, 18% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 18% 100%, 18% 0%);";
+      } else if(per2>=19 && per2<20){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 19% 100%, 19% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 19% 100%, 19% 0%);";
+      } else if(per2>=20 && per2<21){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 20% 100%, 20% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 20% 100%, 20% 0%);";
+      } else if(per2>=21 && per2<22){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 21% 100%, 21% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 21% 100%, 21% 0%);";
+      } else if(per2>=22 && per2<23){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 22% 100%, 22% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 22% 100%, 22% 0%);";
+      } else if(per2>=23 && per2<24){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 23% 100%, 23% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 23% 100%, 23% 0%);";
+      } else if(per2>=24 && per2<25){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 24% 100%, 24% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 24% 100%, 24% 0%);";
+      } else if(per2>=25 && per2<26){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 25% 100%, 25% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 25% 100%, 25% 0%);";
+      } else if(per2>=26 && per2<27){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 26% 100%, 26% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 26% 100%, 26% 0%);";
+      } else if(per2>=27 && per2<28){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 27% 100%, 27% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 27% 100%, 27% 0%);";
+      } else if(per2>=28 && per2<29){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 28% 100%, 28% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 28% 100%, 28% 0%);";
+      } else if(per2>=29 && per2<30){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 29% 100%, 29% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 29% 100%, 29% 0%);";
+      } else if(per2>=30 && per2<31){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 30% 100%, 30% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 30% 100%, 30% 0%);";
+      } else if(per2>=31 && per2<32){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 31% 100%, 31% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 31% 100%, 31% 0%);";
+      } else if(per2>=32 && per2<33){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 32% 100%, 32% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 32% 100%, 32% 0%);";
+      } else if(per2>=33 && per2<34){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 33% 100%, 33% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 33% 100%, 33% 0%);";
+      } else if(per2>=34 && per2<35){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 0%);";
+      } else if(per2>=35 && per2<36){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 35% 100%, 35% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 35% 100%, 35% 0%);";
+      } else if(per2>=36 && per2<37){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 36% 100%, 36% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 36% 100%, 36% 0%);";
+      } else if(per2>=37 && per2<38){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 37% 100%, 37% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 37% 100%, 37% 0%);";
+      } else if(per2>=38 && per2<39){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 38% 100%, 38% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 38% 100%, 38% 0%);";
+      } else if(per2>=39 && per2<40){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 39% 100%, 39% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 39% 100%, 39% 0%);";
+      } else if(per2>=40 && per2<41){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 40% 100%, 40% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 40% 100%, 40% 0%);";
+      } else if(per2>=41 && per2<42){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 41% 100%, 41% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 40% 100%, 40% 0%);";
+      } else if(per2>=42 && per2<43){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 42% 100%, 42% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 42% 100%, 42% 0%);";
+      } else if(per2>=43 && per2<44){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 43% 100%, 43% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 43% 100%, 43% 0%);";
+      } else if(per2>=44 && per2<45){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 44% 100%, 44% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 44% 100%, 44% 0%);";
+      } else if(per2>=45 && per2<46){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 45% 100%, 45% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 45% 100%, 45% 0%);";
+      } else if(per2>=46 && per2<47){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 47% 100%, 47% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 47% 100%, 47% 0%);";
+      } else if(per2>=47 && per2<48){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 47% 100%, 47% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 47% 100%, 47% 0%);";
+      } else if(per2>=48 && per2<49){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 48% 100%, 48% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 48% 100%, 48% 0%);";
+      } else if(per2>=49 && per2<50){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 49% 100%, 49% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 49% 100%, 49% 0%);";
+      } else if(per2>=50 && per2<51){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 50% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 50% 0%);";
+      } else if(per2>=51 && per2<52){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 51% 100%, 51% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 51% 100%, 51% 0%);";
+      } else if(per2>=52 && per2<53){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 52% 100%, 52% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 52% 100%, 52% 0%);";
+      } else if(per2>=53 && per2<54){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 53% 100%, 53% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 53% 100%, 53% 0%);";
+      } else if(per2>=54 && per2<55){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 54% 100%, 54% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 54% 100%, 54% 0%);";
+      } else if(per2>=55 && per2<56){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 55% 100%, 55% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 55% 100%, 55% 0%);";
+      } else if(per2>=56 && per2<57){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 56% 100%, 56% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 56% 100%, 56% 0%);";
+      } else if(per2>=57 && per2<58){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 57% 100%, 57% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 57% 100%, 57% 0%);";
+      } else if(per2>=58 && per2<59){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 58% 100%, 58% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 58% 100%, 58% 0%);";
+      } else if(per2>=59 && per2<60){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 59% 100%, 59% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 59% 100%, 59% 0%);";
+      } else if(per2>=60 && per2<61){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 60% 100%, 60% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 60% 100%, 60% 0%);";
+      } else if(per2>=61 && per2<62){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 61% 100%, 61% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 61% 100%, 61% 0%);";
+      } else if(per2>=62 && per2<63){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 62% 100%, 62% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 62% 100%, 62% 0%);";
+      } else if(per2>=63 && per2<64){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 63% 100%, 63% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 63% 100%, 63% 0%);";
+      } else if(per2>=64 && per2<64){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 64% 100%, 64% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 60% 100%, 60% 0%);";
+      } else if(per2>=64 && per2<65){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 64% 100%, 64% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 64% 100%, 64% 0%);";
+      } else if(per2>=65 && per2<66){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 65% 100%, 65% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 65% 100%, 65% 0%);";
+      } else if(per2>=66 && per2<67){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 66% 100%, 66% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 66% 100%, 66% 0%);";
+      } else if(per2>=67 && per2<68){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 67% 100%, 67% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 67% 100%, 67% 0%);";
+      } else if(per2>=68 && per2<69){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 68% 100%, 68% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 68% 100%, 68% 0%);";
+      } else if(per2>=69 && per2<70){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 69% 100%, 69% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 69% 100%, 69% 0%);";
+      } else if(per2>=70 && per2<71){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 70% 100%, 70% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 70% 100%, 70% 0%);";
+      } else if(per2>=71 && per2<72){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 71% 100%, 71% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 71% 100%, 71% 0%);";
+      } else if(per2>=72 && per2<73){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 72% 100%, 72% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 72% 100%, 72% 0%);";
+      } else if(per2>=73 && per2<74){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 73% 100%, 73% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 73% 100%, 73% 0%);";
+      } else if(per2>=74 && per2<75){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 74% 100%, 74% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 74% 100%, 74% 0%);";
+      } else if(per2>=75 && per2<76){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 75% 100%, 75% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 75% 100%, 75% 0%);";
+      } else if(per2>=76 && per2<77){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 76% 100%, 76% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 76% 100%, 76% 0%);";
+      } else if(per2>=77 && per2<78){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 77% 100%, 77% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 77% 100%, 77% 0%);";
+      } else if(per2>=78 && per2<79){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 78% 100%, 78% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 78% 100%, 78% 0%);";
+      } else if(per2>=79 && per2<80){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 79% 100%, 79% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 79% 100%, 79% 0%);";
+      } else if(per2>=80 && per2<81){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 80% 100%, 80% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 80% 100%, 80% 0%);";
+      } else if(per2>=81 && per2<82){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 81% 100%, 81% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 81% 100%, 81% 0%);";
+      } else if(per2>=82 && per2<83){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 82% 100%, 82% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 82% 100%, 82% 0%);";
+      } else if(per2>=83 && per2<84){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 83% 100%, 83% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 83% 100%, 83% 0%);";
+      } else if(per2>=84 && per2<85){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 84% 100%, 84% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 84% 100%, 84% 0%);";
+      } else if(per2>=85 && per2<86){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 85% 100%, 85% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 85% 100%, 85% 0%);";
+      } else if(per2>=86 && per2<87){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 86% 100%, 86% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 86% 100%, 86% 0%);";
+      } else if(per2>=87 && per2<88){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 87% 100%, 87% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 87% 100%, 87% 0%);";
+      } else if(per2>=88 && per2<89){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 88% 100%, 88% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 88% 100%, 88% 0%);";
+      } else if(per2>=89 && per2<90){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 90% 100%, 90% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 90% 100%, 90% 0%);";
+      } else if(per2>=90 && per2<91){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 90% 100%, 90% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 90% 100%, 90% 0%);";
+      } else if(per2>=91 && per2<92){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 91% 100%, 91% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 91% 100%, 91% 0%);";
+      } else if(per2>=92 && per2<93){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 92% 100%, 92% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 92% 100%, 92% 0%);";
+      } else if(per2>=93 && per2<94){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 93% 100%, 93% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 93% 100%, 93% 0%);";
+      } else if(per2>=94 && per2<95){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 94% 100%, 94% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 94% 100%, 94% 0%);";
+      } else if(per2>=95 && per2<96){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 95% 100%, 95% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 95% 100%, 95% 0%);";
+      } else if(per2>=96 && per2<97){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 96% 100%, 96% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 96% 100%, 96% 0%);";
+      } else if(per2>=97 && per2<98){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 97% 100%, 97% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 97% 100%, 97% 0%);";
+      } else if(per2>=98 && per2<99){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 98% 100%, 98% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 98% 100%, 98% 0%);";
+      } else if(per2>=99 && per2<100){
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%; clip-path: polygon(0% 0%, 0% 100%, 99% 100%, 99% 0%);";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%; clip-path: polygon(0% 0%, 0% 100%, 99% 100%, 99% 0%);";
+      }
+
+
+
+
+      }
+      if(distance2<0) {
+        clearInterval(timer);
+        document.getElementById(id1).textContent = '100% ';
+        document.getElementById("over").src = "end.png";
+        document.getElementById("barL").src = "barL2.png";
+        document.getElementById("barL").style=
+        "width:64.07%; position: fixed; left:35.3%; top:82.4%;";
+
+
+        document.getElementById("barS").src = "barS2.png";
+        document.getElementById("barS").style = "width:8.7%; height:1.47%; position: fixed; left:80.5%; top:17.6%;";
+
+        return;
+      }
+
+
+    }
+
+    timer = setInterval(showRemaining, 1000);
+  }
+
+
+
+  </script>
